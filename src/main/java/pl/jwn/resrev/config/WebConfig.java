@@ -24,12 +24,12 @@ public class WebConfig implements WebMvcConfigurer {
 //        return new PublisherConverter();
 //    }
 
-    @Bean(name="localeResolver")
-        public LocaleContextResolver localeResolver() {
-        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-//        localeResolver.setDefaultLocale(new Locale("pl","PL"));
-        localeResolver.setDefaultLocale(Locale.forLanguageTag("PL"));
-        return localeResolver;
-    }
+//    @Bean(name="localeResolver")
+//        public LocaleContextResolver localeResolver() {
+//        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+////        localeResolver.setDefaultLocale(new Locale("pl","PL"));
+//        localeResolver.setDefaultLocale(Locale.forLanguageTag("PL"));
+//        return localeResolver;
+//    }
 
 }
