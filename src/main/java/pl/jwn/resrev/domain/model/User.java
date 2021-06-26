@@ -12,6 +12,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.Random;
 
+import static org.mindrot.jbcrypt.BCrypt.gensalt;
+import static org.mindrot.jbcrypt.BCrypt.hashpw;
+
+
 @Entity
 @Table(name = "users")
 @Getter @Setter @ToString(exclude="passwd")
@@ -43,21 +47,25 @@ public class User {
     @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
     private int accessLevel;
 
-    public User(int accessLevel, String uuid, String login, String email){
+    public User(String uuid, String login, String email, int accessLevel){
         this.uuid = uuid;
         this.login = login;
         this.email = email;
         this.accessLevel = accessLevel;
     }
 
-    public User(String login, String email, String passwd, int accessLevel){
+    public User(String login, String email, String passwd){
         this.login = login;
         this.email = email;
-        this.passwd = passwd; // dodać generowanie salt'a i hashowanie
-        this.accessLevel = accessLevel;
+        this.passwdSalt = gensalt();
+        this.passwd = hashPasswd(passwd, passwdSalt);
+        this.accessLevel = 1;
 
         Random rand = new Random();
-        this.passwdSalt = "salt" + rand.nextInt(10000);   // poprawic
         this.uuid = "uuid"+rand.nextInt(10000);   //poprawic
+    }
+
+    private String hashPasswd(String password, String salt) {
+        return hashpw(password, salt);
     }
 }

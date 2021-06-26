@@ -13,7 +13,7 @@
         <div> E-mail: <input type="text" name="userEmail"> </div>
         <div> Password: <input type="passwd" name="userPasswd"> </div>
         <div> Re-type Password: <input type="passwd" name="userPasswd2"> </div>
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
 
 </body>

@@ -8,5 +8,12 @@
 <body>
 <h1>Welcome</h1>
 
+<a href="/user/login">Login</a><br>
+<a href="/user/register">Register</a><br>
+
+<h3>TEMP</h3>
+<a href="/user/list">Lista userów</a><br>
+
+
 </body>
 </html>
