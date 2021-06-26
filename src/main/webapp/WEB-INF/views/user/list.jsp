@@ -4,32 +4,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista książek</title>
+    <title>Lista użytkowników</title>
 </head>
 <body>
-<div><a href="">Dodaj książkę</a></div>
-<div>
-    <table>
+    <div><table>
         <tr>
             <th>Id</th>
-            <th>Title</th>
-            <th>Rating</th>
-            <th>Description</th>
-            <th>Publisher</th>
-            <th>Action</th>
+            <th>Login</th>
+            <th>E-mail</th>
+            <th>Access level</th>
         </tr>
-<%--        <c:forEach items="${books}" var="book">--%>
-<%--            <tr>--%>
-<%--                <td>${book.id}</td>--%>
-<%--                <td>${book.title}</td>--%>
-<%--                <td>${book.rating}</td>--%>
-<%--                <td>${book.description}</td>--%>
-<%--                <td>${book.publisher.name}</td>--%>
-<%--&lt;%&ndash;                <td><a href=""></a></td>&ndash;%&gt;--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
-    </table>
-</div>
+        <c:forEach items="${users}" var="user">
+            <tr>
+                <td>${user.uuid}</td>
+                <td>${user.login}</td>
+                <td>${user.email}</td>
+                <td>${user.accessLevel}</td>
+            </tr>
+        </c:forEach>
+    </table></div>
+
+<%--    Tylko dla zalogowanego admina--%>
+<%--    <div>--%>
+<%--        <a href="/user/new">Add new user</a>--%>
+<%--    </div>--%>
 
 </body>
 </html>
