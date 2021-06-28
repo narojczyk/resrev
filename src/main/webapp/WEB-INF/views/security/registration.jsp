@@ -9,10 +9,10 @@
 <body>
 
     <form action="/user/register" method="post">
-        <div> Login: <input type="text" name="userLogin"> </div>
-        <div> E-mail: <input type="text" name="userEmail"> </div>
-        <div> Password: <input type="passwd" name="userPasswd"> </div>
-        <div> Re-type Password: <input type="passwd" name="userPasswd2"> </div>
+        <div> <label>Login: <input type="text" name="username"></label> </div>
+        <div> <label>E-mail: <input type="text" name="email"></label> </div>
+        <div> <label>Password: <input type="passwd" name="passwd1"></label> </div>
+        <div> <label>Re-type Password: <input type="passwd" name="passwd2"></label> </div>
         <input type="submit" value="Register">
     </form>
 
