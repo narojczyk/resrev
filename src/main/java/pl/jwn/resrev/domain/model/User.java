@@ -45,6 +45,7 @@ public class User {
 
     @Range(min=0, max=9)
     @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
+    // zamienic na role w stringach
     private int accessLevel;
 
     public User(String uuid, String login, String email, int accessLevel){

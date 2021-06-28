@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 @Slf4j
+// controller zamaist ctrl
 public class HomeCtrl {
     // Takie pole jest generowane przez adnotację @Slf4j z lomboka
     // private static final Logger log = LoggerFactory.getLogger(UserFormController.class);
