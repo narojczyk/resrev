@@ -27,27 +27,4 @@ public class UserCtrl {
         return "user/list";
     }
 
-    @GetMapping("/login")
-    public String loginForm(Model model){
-//        model.addAttribute("users", userDao.findAll());
-        return "user/login";
-    }
-
-    @PostMapping("/login")
-    public String loginFormProcessing(Model model){
-//        model.addAttribute("users", userDao.findAll());
-        return "landingpage";
-    }
-
-    @GetMapping("/register")
-    public String register(Model model){
-//        model.addAttribute("users", userDao.findAll());
-        return "user/register";
-    }
-
-    @PostMapping("/register")
-    public String registerFormProcessing(Model model){
-//        model.addAttribute("users", userDao.findAll());
-        return "landingpage";
-    }
 }

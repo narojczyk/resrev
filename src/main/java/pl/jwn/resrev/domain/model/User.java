@@ -1,25 +1,19 @@
 package pl.jwn.resrev.domain.model;
 
 import lombok.*;
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.Random;
-
-import static org.mindrot.jbcrypt.BCrypt.gensalt;
-import static org.mindrot.jbcrypt.BCrypt.hashpw;
-
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 @Getter @Setter @ToString(exclude="passwd")
-@NoArgsConstructor
+//@NoArgsConstructor
 public class User {
     @Id @NotEmpty
     @Column(length = 40, nullable = false, unique=true)
@@ -27,46 +21,41 @@ public class User {
 
     @NotEmpty
     @Column(length = 16, nullable = false, unique=true)
-    private String login;
+    private String username;
 
     @Email
     @Column(length = 60, nullable = false, unique=true)
     private String email;
 
     @NotEmpty
-    @Column(nullable = false)
-    @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
+    @Column(length = 300, nullable = false)
     private String passwd;
 
-    @NotEmpty
     @Column(nullable = false)
-    @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
-    private String passwdSalt;
+    private String role;
 
-    @Range(min=0, max=9)
-    @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
-    // zamienic na role w stringach
-    private int accessLevel;
+    public User(){
+        generateUUID();
+    }
 
-    public User(String uuid, String login, String email, int accessLevel){
-        this.uuid = uuid;
-        this.login = login;
+    public User(String username, String email, String passwd, String role){
+        generateUUID();
+        this.username = username;
         this.email = email;
-        this.accessLevel = accessLevel;
+        this.passwd = passwd;
+        this.role = role;
     }
 
-    public User(String login, String email, String passwd){
-        this.login = login;
+    public User(String username, String email, String passwd){
+        generateUUID();
+        this.username = username;
         this.email = email;
-        this.passwdSalt = gensalt();
-        this.passwd = hashPasswd(passwd, passwdSalt);
-        this.accessLevel = 1;
-
-        Random rand = new Random();
-        this.uuid = "uuid"+rand.nextInt(10000);   //poprawic
+        this.passwd = passwd;
+        this.role = "ROLE_USER";
     }
 
-    private String hashPasswd(String password, String salt) {
-        return hashpw(password, salt);
+    private void generateUUID(){
+        this.uuid = UUID.randomUUID().toString();
     }
+
 }

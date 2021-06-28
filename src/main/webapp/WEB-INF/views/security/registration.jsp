@@ -8,11 +8,11 @@
 </head>
 <body>
 
-    <form action="/user/register" method="post">
+    <form action="/registration" method="post">
         <div> <label>Login: <input type="text" name="username"></label> </div>
         <div> <label>E-mail: <input type="text" name="email"></label> </div>
-        <div> <label>Password: <input type="passwd" name="passwd1"></label> </div>
-        <div> <label>Re-type Password: <input type="passwd" name="passwd2"></label> </div>
+        <div> <label>Password: <input type="passwd" name="passwd"></label> </div>
+        <div> <label>Re-type Password: <input type="passwd" name="passwdConfirmed"></label> </div>
         <input type="submit" value="Register">
     </form>
 

@@ -12,14 +12,14 @@
             <th>Id</th>
             <th>Login</th>
             <th>E-mail</th>
-            <th>Access level</th>
+            <th>Role</th>
         </tr>
         <c:forEach items="${users}" var="user">
             <tr>
                 <td>${user.uuid}</td>
-                <td>${user.login}</td>
+                <td>${user.username}</td>
                 <td>${user.email}</td>
-                <td>${user.accessLevel}</td>
+                <td>${user.role}</td>
             </tr>
         </c:forEach>
     </table></div>
