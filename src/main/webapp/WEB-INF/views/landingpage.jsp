@@ -13,6 +13,7 @@
 
     <h3>TEMP</h3>
     <a href="/user/list">Lista userów</a><br>
+    <a href="/resources/list">Lista zasobów</a><br>
 
 
 </body>
