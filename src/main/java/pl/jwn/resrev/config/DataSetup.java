@@ -6,6 +6,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pl.jwn.resrev.domain.model.User;
+import pl.jwn.resrev.domain.repository.ArtefactRepository;
 import pl.jwn.resrev.domain.repository.UserRepository;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,9 +17,11 @@ public class DataSetup {
     private AtomicBoolean setAdminAccount = new AtomicBoolean(false);
 
     private final UserRepository userRepository;
+    private final ArtefactRepository artefactRepository;
 
-    public DataSetup(UserRepository userRepository) {
+    public DataSetup(UserRepository userRepository, ArtefactRepository artefactRepository) {
         this.userRepository = userRepository;
+        this.artefactRepository = artefactRepository;
     }
 
     @EventListener

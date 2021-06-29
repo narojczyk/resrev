@@ -7,8 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.util.Random;
-import java.util.UUID;
+//import java.util.UUID;
+
+import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
 @Entity
 @Table(name = "users")
@@ -23,6 +24,8 @@ public class User {
     @Column(length = 16, nullable = false, unique=true)
     private String username;
 
+    // dodać pole 'division' albo 'group'
+
     @Email
     @Column(length = 60, nullable = false, unique=true)
     private String email;
@@ -35,11 +38,11 @@ public class User {
     private String role;
 
     public User(){
-        generateUUID();
+        this.uuid = generateUUID();
     }
 
     public User(String username, String email, String passwd, String role){
-        generateUUID();
+        this.uuid = generateUUID();
         this.username = username;
         this.email = email;
         this.passwd = passwd;
@@ -47,15 +50,15 @@ public class User {
     }
 
     public User(String username, String email, String passwd){
-        generateUUID();
+        this.uuid = generateUUID();
         this.username = username;
         this.email = email;
         this.passwd = passwd;
         this.role = "ROLE_USER";
     }
 
-    private void generateUUID(){
-        this.uuid = UUID.randomUUID().toString();
-    }
+//    private void generateUUID(){
+//        this.uuid = UUID.randomUUID().toString();
+//    }
 
 }
