@@ -1,14 +1,17 @@
 package pl.jwn.resrev.domain.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
@@ -17,8 +20,12 @@ import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 @Getter @Setter @ToString
 public class Artefact {
     @Id @NotEmpty
+    @Setter(AccessLevel.NONE)
     @Column(length = 40, nullable = false, unique=true)
     private String uuid;    // * (wymagane)
+
+    @Column(length = 40, nullable = false)
+    private String userUuid;    // * (wymagane)
 
     @NotEmpty
     @Column(length = 2000, nullable = false)
@@ -33,9 +40,15 @@ public class Artefact {
     @Column(length = 4, nullable = false)
     private String filetype; // zip | pdf | png *
 
-//    private Date created; // data *
+    @Setter(AccessLevel.NONE)
+//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, columnDefinition = "DATETIME")
+    private Timestamp created; // data *
 
-//    private Date modified;    // data *
+    @Setter(AccessLevel.NONE)
+//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, columnDefinition = "DATETIME")
+    private Timestamp modified;    // data *
 
     @NotEmpty
     @Column(length = 500, nullable = false)
@@ -103,8 +116,17 @@ public class Artefact {
 
     public Artefact(){
         this.uuid = generateUUID();
+        this.created = new Timestamp(System.currentTimeMillis());
+        this.modified = created;
     }
 
-
+    public Artefact(String userUuid, String container, String type, String filetype, String description){
+        this();
+        this.userUuid = userUuid;
+        this.container = container;
+        this.type = type;
+        this.filetype = filetype;
+        this.description = description;
+    }
 
 }

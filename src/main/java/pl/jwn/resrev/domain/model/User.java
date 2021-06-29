@@ -17,6 +17,7 @@ import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 //@NoArgsConstructor
 public class User {
     @Id @NotEmpty
+    @Setter(AccessLevel.NONE)
     @Column(length = 40, nullable = false, unique=true)
     private String uuid;
 
@@ -42,20 +43,20 @@ public class User {
     }
 
     public User(String username, String email, String passwd, String role){
-        this.uuid = generateUUID();
+        this();
         this.username = username;
         this.email = email;
         this.passwd = passwd;
         this.role = role;
     }
 
-    public User(String username, String email, String passwd){
-        this.uuid = generateUUID();
+/*    public User(String username, String email, String passwd){
+        this();
         this.username = username;
         this.email = email;
         this.passwd = passwd;
         this.role = "ROLE_USER";
-    }
+    }*/
 
 //    private void generateUUID(){
 //        this.uuid = UUID.randomUUID().toString();
