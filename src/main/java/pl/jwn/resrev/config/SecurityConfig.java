@@ -20,15 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
        auth
-               .userDetailsService(userDetailService)
-               .passwordEncoder(passwordEncoder());
+        .userDetailsService(userDetailService)
+        .passwordEncoder(passwordEncoder());
     }
 /*
     @Override
@@ -47,6 +46,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .and()
             .csrf().disable();    // włączyć później
-
     }
 }
