@@ -7,15 +7,18 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import javax.validation.constraints.NotEmpty;
 
+import static pl.jwn.resrev.utils.KeyGen.generateUUID;
+
 @Entity
-@Table(name = "share")
+@Table(name = "comments")
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     @Setter(AccessLevel.NONE)
@@ -35,6 +38,7 @@ public class Comment {
     private String commentMessage;
 
     public Comment(String artefactUuid, String userUuid, String commentMessage){
+        this();
         this.created = new Timestamp(System.currentTimeMillis());
         this.artefactUuid = artefactUuid;
         this.userUuid = userUuid;

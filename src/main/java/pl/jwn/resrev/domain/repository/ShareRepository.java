@@ -6,6 +6,6 @@ import pl.jwn.resrev.domain.model.Share;
 import java.util.List;
 
 
-public interface ShareRepository extends JpaRepository<Share,String>  {
+public interface ShareRepository extends JpaRepository<Share,Long>  {
     List<Share> findAllByUserUuid(String userUuid);
 }
