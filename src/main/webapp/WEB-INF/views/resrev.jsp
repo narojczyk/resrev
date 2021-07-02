@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/includes/html/taglibs.jsp" %>
-<%--<%@ include file="/footer.jsp" %>--%>
 
 <html lang="pl">
 <%--    <head> tag contents </head>--%>
@@ -18,17 +17,19 @@
 
     <div>
         <%--Servlet content--%>
+        <h2>Res rev main page</h2>
         <security:authorize access="hasRole('USER')">
-            <%@ include file="/WEB-INF/views/user/dashboard.jsp" %>
+            <a href="/user/dashboard">user dashboard</a>
+
         </security:authorize>
 
-        <security:authorize access="hasRole('ADMIN')">
-            <%@ include file="/WEB-INF/views/admin/dashboard.jsp" %>
-        </security:authorize>
+<%--        <security:authorize access="hasRole('ADMIN')">--%>
+<%--            <%@ include file="/WEB-INF/views/admin/dashboard.jsp" %>--%>
+<%--        </security:authorize>--%>
 
-        <security:authorize access="isAnonymous()">
-            <%@ include file="/includes/html/anonymous/dashboard.jsp" %>
-        </security:authorize>
+<%--        <security:authorize access="isAnonymous()">--%>
+<%--            <%@ include file="/includes/html/anonymous/dashboard.jsp" %>--%>
+<%--        </security:authorize>--%>
 
     </div>
 

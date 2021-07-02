@@ -7,14 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-//import java.util.UUID;
 
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
 @Entity
 @Table(name = "users")
 @Getter @Setter @ToString(exclude="passwd")
-//@NoArgsConstructor
 public class User {
     @Id @NotEmpty
     @Setter(AccessLevel.NONE)

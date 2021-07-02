@@ -12,7 +12,7 @@
 <div class="header-palette-authorised">
     <div class="nav-bar">
         <div class="nav-info">Menu:</div>
-        <div class="nav-item"><a class="nav-link" href="/resources/list">Lista zasobów</a></div>
+        <div class="nav-item"><a class="nav-link" href="/resources/userartefacts">Lista zasobów</a></div>
         <div class="nav-item"><a class="nav-link" href="/">Home</a></div>
     </div>
 </div>

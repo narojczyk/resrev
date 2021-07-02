@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ArtefactRepository extends JpaRepository <Artefact,String>{
     List<Artefact> findAll();
-//    List<Artefact> findAllByUserUUID(String userUuid);
+
+    List<Artefact> findAllByUserUuid(String userUuid);
 }
