@@ -17,12 +17,17 @@
         <c:forEach items="${users}" var="user">
             <tr>
                 <td>${user.uuid}</td>
-                <td>${user.username}</td>
+                <td><c:out value="${userNamesMap[user.uuid]}"/></td>
+<%--                <td>${user.username}</td>--%>
                 <td>${user.email}</td>
                 <td>${user.role}</td>
             </tr>
         </c:forEach>
     </table></div>
+
+    <c:forEach var="usr" items="${userNamesMap}">
+        uuid: ${usr.key}  user name: ${usr.value}<br>
+    </c:forEach>
 
 <%--    Tylko dla zalogowanego admina--%>
 <%--    <div>--%>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.jwn.resrev.domain.model.User;
 import pl.jwn.resrev.domain.repository.UserRepository;
+import pl.jwn.resrev.domain.service.DataLoaderService;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -22,13 +23,16 @@ public class UserCtrl {
     // private static final Logger log = LoggerFactory.getLogger(UserFormController.class);
 
     private final UserRepository userRepo;
+    private final DataLoaderService dataLoaderService;
 
-    public UserCtrl(UserRepository userRepo) {
+    public UserCtrl(UserRepository userRepo, DataLoaderService dataLoaderService) {
         this.userRepo = userRepo;
+        this.dataLoaderService = dataLoaderService;
     }
 
     @GetMapping("/list")
     public String list(Model model){
+        dataLoaderService.remapUsersToModel(model);
         model.addAttribute("users", userRepo.findAll());
         return "user/list";
     }

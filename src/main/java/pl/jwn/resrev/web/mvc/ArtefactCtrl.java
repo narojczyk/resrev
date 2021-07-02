@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.jwn.resrev.domain.model.Artefact;
@@ -13,6 +12,7 @@ import pl.jwn.resrev.domain.model.User;
 import pl.jwn.resrev.domain.repository.ArtefactRepository;
 import pl.jwn.resrev.domain.repository.ShareRepository;
 import pl.jwn.resrev.domain.repository.UserRepository;
+import pl.jwn.resrev.domain.service.DataLoaderService;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -26,11 +26,14 @@ public class ArtefactCtrl {
     private final ArtefactRepository artefactRepo;
     private final UserRepository userRepo;
     private final ShareRepository shareRepo;
+    private final DataLoaderService dataLoaderService;
 
-    public ArtefactCtrl(ArtefactRepository artefactRepo, UserRepository userRepo, ShareRepository shareRepo) {
+    public ArtefactCtrl(ArtefactRepository artefactRepo, UserRepository userRepo, ShareRepository shareRepo,
+                        DataLoaderService dataLoaderService) {
         this.artefactRepo = artefactRepo;
         this.userRepo = userRepo;
         this.shareRepo = shareRepo;
+        this.dataLoaderService = dataLoaderService;
     }
 
     @GetMapping("/list")
@@ -41,6 +44,7 @@ public class ArtefactCtrl {
 
     @GetMapping("/show")
     public String showArtefact(Model model, @RequestParam String uuid ){
+        dataLoaderService.remapUsersToModel(model);
         Optional<Artefact> art = artefactRepo.findByUuid(uuid);
         if(art.isPresent()) {
             model.addAttribute("getResource", "artefactDetails");
@@ -52,6 +56,7 @@ public class ArtefactCtrl {
 
     @GetMapping("/userartefacts")
     public String userartefacs(Principal principal, Model model){
+        dataLoaderService.remapUsersToModel(model);
         Optional<User> currentUser = userRepo.findByUsername(principal.getName());
         if(currentUser.isPresent()) {
             model.addAttribute("getResource", "myartefacts");
