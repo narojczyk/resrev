@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -7,9 +8,12 @@
     <title>Lista zasobów użytownika</title>
 </head>
 <body>
+
+<security:authorize access="isAuthenticated()">
+    authenticated as <security:authentication property="principal.username" />
+</security:authorize>
+
 <div><table>
-    <h2>zasoby własne</h2>
-    <h2>zasoby udostępnione</h2>
     <tr>
         <th>UUID</th>
         <th>user UUID</th>
@@ -25,6 +29,10 @@
         </tr>
     </c:forEach>
 </table></div>
+<h2>zasoby własne</h2>
+<h2>zasoby udostępnione</h2>
+
+
 
 </body>
 </html>

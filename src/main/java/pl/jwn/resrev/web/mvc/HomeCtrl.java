@@ -17,6 +17,6 @@ public class HomeCtrl {
 
     @GetMapping("/")
     public String landingPage(Model model){
-        return "landingpage";
+        return "resrev";
     }
 }

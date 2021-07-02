@@ -1,0 +1,61 @@
+/* main css styles */
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* headers */
+.header-palette-anonymous{
+    background-color: gainsboro;
+}
+
+.header-palette-authorised{
+    background-color: limegreen;
+}
+
+.nav-bar{
+    margin:  0 0 5px 0;
+    padding: 7px;
+    height: 40px;
+}
+
+.nav-info{
+    margin: 0;
+    color: red;
+    font-family: "Century Schoolbook L";
+    font-size: large;
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-item{
+    margin: 0;
+    padding: 0 5px 0 5px;
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+a.nav-link{
+    color: brown;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/*tests*/
+body{
+    background-color: #deb887;
+}
+
+h1{
+    color: #ff0000;
+}
