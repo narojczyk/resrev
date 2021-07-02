@@ -5,8 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-import static pl.jwn.resrev.utils.KeyGen.generateUUID;
-
 @Entity
 @Table(name = "share")
 @Getter @Setter @ToString
@@ -23,10 +21,10 @@ public class Share {
 
     @NotEmpty
     @Column(length = 40, nullable = false)
-    private String userUuid;
+    private String sharedWithUuid;
 
-    public Share(String artefactUuid, String userUuid){
+    public Share(String artefactUuid, String sharedWithUuid){
         this.artefactUuid = artefactUuid;
-        this.userUuid = userUuid;
+        this.sharedWithUuid = sharedWithUuid;
     }
 }

@@ -56,7 +56,7 @@ public class DataSetup {
             User kvt = new User("kvt", "kvt@costam.pl","{noop}x", "ROLE_USER");
             userRepository.save(jwn);
             userRepository.save(kww);
-            userRepository.save(kww);
+            userRepository.save(kvt);
             log.debug("3 users added");
             log.debug("~-~".repeat(20));
 

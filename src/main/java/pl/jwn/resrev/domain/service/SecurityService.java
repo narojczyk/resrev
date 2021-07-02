@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.jwn.resrev.domain.model.User;
 import pl.jwn.resrev.domain.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class SecurityService {
@@ -22,5 +24,13 @@ public class SecurityService {
         user.setPasswd(encodedPasswd);
         user.setRole("ROLE_USER");
         userRepository.save(user);
+    }
+
+    public void passwdReset(String uuid, String newPasswd){
+        String encodedPasswd = passwordEncoder.encode(newPasswd);
+        Optional<User> optUser = userRepository.findByUuid(uuid);
+        if(optUser.isPresent()){
+            optUser.get().setPasswd(encodedPasswd);
+        }
     }
 }

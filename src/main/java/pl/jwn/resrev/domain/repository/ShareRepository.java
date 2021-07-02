@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface ShareRepository extends JpaRepository<Share,Long>  {
-    List<Share> findAllByUserUuid(String userUuid);
+    List<Share> findAllBySharedWithUuid(String sharedWithUuid);
 }

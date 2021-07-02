@@ -17,13 +17,13 @@
 
 <div>
     <%--Servlet content--%>
-    <h2>Registration</h2>
-    <form action="/registration" method="post">
-        <div> <label>Login: <input type="text" name="username"></label> </div>
-        <div> <label>E-mail: <input type="text" name="email"></label> </div>
+    <h2>Reset hasła dla:</h2>
+    <h4>${user.username} (${user.email})</h4>
+    <form action="/passwd/reset" method="post">
         <div> <label>Password: <input type="password" name="passwd"></label> </div>
         <div> <label>Re-type Password: <input type="password" name="passwdConfirmed"></label> </div>
-        <input type="submit" value="Register">
+        <input type="hidden" name="uuid" value="${user.uuid}">
+        <input type="submit" value="Resetuj hasło">
     </form>
 
 </div>

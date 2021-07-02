@@ -1,12 +1,13 @@
 package pl.jwn.resrev.domain.model;
 
 import lombok.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
@@ -36,6 +37,12 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+//    @ManyToMany
+//    @JoinTable(name = "share",
+//            joinColumns = @JoinColumn(name = "uuid"),
+//            inverseJoinColumns = @JoinColumn(name = "sharedWithUuid"))
+//    private List<Share> sharedArtefactUuids = new ArrayList<>();
+
     public User(){
         this.uuid = generateUUID();
     }
@@ -47,17 +54,4 @@ public class User {
         this.passwd = passwd;
         this.role = role;
     }
-
-/*    public User(String username, String email, String passwd){
-        this();
-        this.username = username;
-        this.email = email;
-        this.passwd = passwd;
-        this.role = "ROLE_USER";
-    }*/
-
-//    private void generateUUID(){
-//        this.uuid = UUID.randomUUID().toString();
-//    }
-
 }

@@ -7,8 +7,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import javax.validation.constraints.NotEmpty;
 
-import static pl.jwn.resrev.utils.KeyGen.generateUUID;
-
 @Entity
 @Table(name = "comments")
 @Getter
@@ -31,17 +29,17 @@ public class Comment {
 
     @NotEmpty
     @Column(length = 40, nullable = false)
-    private String userUuid;
+    private String commenterUuid;
 
     @NotEmpty
     @Column(length = 3000, nullable = false)
     private String commentMessage;
 
-    public Comment(String artefactUuid, String userUuid, String commentMessage){
+    public Comment(String artefactUuid, String commenterUuid, String commentMessage){
         this();
         this.created = new Timestamp(System.currentTimeMillis());
         this.artefactUuid = artefactUuid;
-        this.userUuid = userUuid;
+        this.commenterUuid = commenterUuid;
         this.commentMessage = commentMessage;
     }
 

@@ -23,6 +23,14 @@
         <c:if test = "${getResource == 'myartefacts'}">
             <%@ include file="/WEB-INF/views/artefacts/list.jsp" %>
         </c:if>
+
+        <c:if test = "${getResource == 'artefactDetails'}">
+            <%@ include file="/WEB-INF/views/artefacts/details.jsp" %>
+        </c:if>
+
+        <c:if test = "${getResource == 'modifyUser'}">
+            <%@ include file="/WEB-INF/views/user/modify.jsp" %>
+        </c:if>
     </security:authorize>
 
 </div>

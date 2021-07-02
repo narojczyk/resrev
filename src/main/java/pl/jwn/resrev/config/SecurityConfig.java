@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/registration").permitAll()
+            .antMatchers("/registration").permitAll()   //puszczać tylko niezalogowanych?
             .antMatchers("/includes/css/**").permitAll()
             .antMatchers("/login").permitAll()
             .antMatchers("/").permitAll()
