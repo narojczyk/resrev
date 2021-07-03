@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "share")
+@Table(name = "shares")
 @Getter @Setter @ToString
 @NoArgsConstructor
 public class Share {

@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
@@ -37,11 +38,11 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-//    @ManyToMany
-//    @JoinTable(name = "share",
-//            joinColumns = @JoinColumn(name = "uuid"),
-//            inverseJoinColumns = @JoinColumn(name = "sharedWithUuid"))
-//    private List<Share> sharedArtefactUuids = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "shares",
+            joinColumns = @JoinColumn(name = "sharedWithUuid"),
+            inverseJoinColumns = @JoinColumn(name = "artefactUuid"))
+    private List<Share> sharesData = new ArrayList<>();
 
     public User(){
         this.uuid = generateUUID();
@@ -53,5 +54,10 @@ public class User {
         this.email = email;
         this.passwd = passwd;
         this.role = role;
+    }
+
+    public User(String username, String email, String passwd, String role, List<Share> sharesData){
+        this(username, email, passwd, role);
+        this.sharesData = sharesData;
     }
 }
