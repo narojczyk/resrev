@@ -4,7 +4,7 @@ package pl.jwn.resrev.domain.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -21,7 +21,7 @@ public class Comment {
 
     @Setter(AccessLevel.NONE)
     @Column(nullable = false, columnDefinition = "DATETIME")
-    private Timestamp created;
+    private LocalDateTime created;
 
     @NotEmpty
     @Column(length = 40, nullable = false)
@@ -37,7 +37,7 @@ public class Comment {
 
     public Comment(String artefactUuid, String commenterUuid, String commentMessage){
         this();
-        this.created = new Timestamp(System.currentTimeMillis());
+        this.created = LocalDateTime.now();
         this.artefactUuid = artefactUuid;
         this.commenterUuid = commenterUuid;
         this.commentMessage = commentMessage;

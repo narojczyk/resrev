@@ -8,10 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-
 
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
@@ -41,14 +38,12 @@ public class Artefact {
     private String filetype; // zip | pdf | png *
 
     @Setter(AccessLevel.NONE)
-//    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, columnDefinition = "DATETIME")
-    private Timestamp created; // data *
+    private LocalDateTime created; // data *
 
     @Setter(AccessLevel.NONE)
-//    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, columnDefinition = "DATETIME")
-    private Timestamp modified;    // data *
+    private LocalDateTime modified;    // data *
 
     @NotEmpty
     @Column(length = 500, nullable = false)
@@ -116,7 +111,7 @@ public class Artefact {
 
     public Artefact(){
         this.uuid = generateUUID();
-        this.created = new Timestamp(System.currentTimeMillis());
+        this.created = LocalDateTime.now();
         this.modified = created;
     }
 
