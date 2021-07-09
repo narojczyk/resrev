@@ -35,8 +35,24 @@ public class Artefact {
     private String type;     // archiwum | raport | rysunek *
 
     @NotEmpty
-    @Column(length = 4, nullable = false)
+    @Column(length = 60, nullable = false)
     private String filetype; // zip | pdf | png *
+
+//    @NotEmpty
+    @Column(length = 40/*, nullable = false*/)
+    private String fileSha1;
+
+//    @NotEmpty
+    @Column(length = 256/*, nullable = false*/)
+    private String fileName;
+
+//    @NotEmpty
+    @Column(length = 1024/*, nullable = false*/)
+    private String storedLocation;
+
+//    @NotEmpty
+    @Column(columnDefinition = "INT"/*, nullable = false*/)
+    private int fileSize;
 
     @Setter(AccessLevel.NONE)
     @Column(nullable = false, columnDefinition = "DATETIME")

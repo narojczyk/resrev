@@ -6,6 +6,21 @@
 <p>dodany: ${artefact.created}, zaktualizowany ${artefact.modified}</p>
 <p>katekogia: ${artefact.type}</p>
 <p>plik: ${artefact.filetype}</p>
+<p>nazwa: ${artefact.fileName}</p>
+<p>SHA-1: ${artefact.fileSha1}</p>
+<p>Opis zawartości: ${artefact.description}</p>
+
+<%--<h3>Udostępniony</h3>--%>
+
+<%--<c:choose>--%>
+<%--    <c:when  test = "${displayCommentForm == 'shareForm'}">--%>
+<%--        <%@ include file="/WEB-INF/views/artefacts/share-form.jsp" %>--%>
+<%--    </c:when>--%>
+<%--    <c:otherwise>--%>
+<%--        <a href="/resources/show/?uuid=${artefact.uuid}&cmt=displayForm">--%>
+<%--            <button type="button">Dodaj komentarz</button></a>--%>
+<%--    </c:otherwise>--%>
+<%--</c:choose>--%>
 
 <h3>Komentarze</h3>
 <c:forEach items="${comments}" var="comment">
