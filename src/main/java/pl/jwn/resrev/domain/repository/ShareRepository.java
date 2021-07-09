@@ -9,7 +9,6 @@ import java.util.List;
 
 
 public interface ShareRepository extends JpaRepository<Share,Long>  {
-//    List<Share> findAllBySharedWithUuid(String sharedWithUuid);
 
     @Query(nativeQuery = true,
             value = "SELECT artefact_uuid FROM "+

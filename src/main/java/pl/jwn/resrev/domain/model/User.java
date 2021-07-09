@@ -35,10 +35,6 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    /* // mam to w dupie
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Share> sharesData = new ArrayList<>();
-    */
     public User(){
         this.uuid = generateUUID();
     }
@@ -50,9 +46,4 @@ public class User {
         this.passwd = passwd;
         this.role = role;
     }
-
-   /* public User(String username, String email, String passwd, String role, List<Share> sharesData){
-        this(username, email, passwd, role);
-        this.sharesData = sharesData;
-    }*/
 }

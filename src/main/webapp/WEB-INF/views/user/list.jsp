@@ -7,6 +7,7 @@
     <title>Lista użytkowników</title>
 </head>
 <body>
+<h1>zrobić z tego panel admina</h1>
     <div><table>
         <tr>
             <th>Id</th>

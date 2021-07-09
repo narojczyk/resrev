@@ -41,12 +41,20 @@ public class ArtefactCtrl {
     }
 
     @GetMapping("/show")
-    public String showArtefact(Model model, @RequestParam String uuid ){
+    public String showArtefact(Model model, @RequestParam String uuid,
+                               @RequestParam(required = false) String cmt){
         dataLoaderService.remapUsersToModel(model);
         Optional<Artefact> art = artefactRepo.findByUuid(uuid);
         if(art.isPresent()) {
             model.addAttribute("getResource", "artefactDetails");
             model.addAttribute("artefact", art.get());
+            // Zaczytaj komentarze do artefaktu
+            model.addAttribute("comments",
+                    artefactService.fromArtefactUuid(art.get().getUuid()));
+            // Wyświetl formularz do dodawania komentarza do danego artefaktu
+            if(cmt!=null && cmt.equals("displayForm")){
+                model.addAttribute("displayCommentForm", cmt);
+            }
             return "user/dashboard";
         }
         return "error";

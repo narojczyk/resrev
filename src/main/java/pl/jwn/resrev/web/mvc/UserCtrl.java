@@ -30,7 +30,7 @@ public class UserCtrl {
         this.dataLoaderService = dataLoaderService;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/testarea")
     public String list(Model model){
         dataLoaderService.remapUsersToModel(model);
         model.addAttribute("users", userRepo.findAll());
