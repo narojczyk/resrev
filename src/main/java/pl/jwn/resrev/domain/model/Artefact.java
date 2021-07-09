@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import pl.jwn.resrev.utils.SQLTablesConstants;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
 @Entity
-@Table(name = "artefacts")
+@Table(name = SQLTablesConstants.ARTEFACTS)
 @Getter @Setter @ToString
 public class Artefact {
     @Id @NotEmpty

@@ -2,13 +2,14 @@ package pl.jwn.resrev.domain.model;
 
 
 import lombok.*;
+import pl.jwn.resrev.utils.SQLTablesConstants;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "comments")
+@Table(name = SQLTablesConstants.COMMENTS)
 @Getter
 @Setter
 @ToString

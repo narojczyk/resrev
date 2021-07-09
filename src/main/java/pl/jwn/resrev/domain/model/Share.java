@@ -1,12 +1,13 @@
 package pl.jwn.resrev.domain.model;
 
 import lombok.*;
+import pl.jwn.resrev.utils.SQLTablesConstants;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "shares")
+@Table(name = SQLTablesConstants.SHARES)
 @Getter @Setter @ToString
 @NoArgsConstructor
 public class Share {
