@@ -39,6 +39,17 @@ public class ArtefactCtrl {
         this.documentTransferService = documentTransferService;
     }
 
+//    @GetMapping("/share")
+//    public String artefactSharingForm(Model model,
+//                                      @RequestParam(required = false) String share){
+//        model.addAttribute("getResource", "artefactDetails");
+//        // Wyświetl formularz do udostępniania artefaktu
+//        if(share!=null && share.equals("artefactShareForm")){
+//            model.addAttribute("artefactShareForm", share);
+//        }
+//        return "user/dashboard";
+//    }
+
     @GetMapping("/create")
     public String artefactCreationForm(Model model){
         model.addAttribute("getResource", "artefactCreateForm");
@@ -75,7 +86,7 @@ public class ArtefactCtrl {
 
     @GetMapping("/show")
     public String showArtefact(Model model, @RequestParam String uuid,
-                               @RequestParam(required = false) String cmt){
+                               @RequestParam(required = false) String insert){
         dataLoaderService.remapUsersToModel(model);
         Optional<Artefact> art = artefactRepo.findByUuid(uuid);
         if(art.isPresent()) {
@@ -85,8 +96,8 @@ public class ArtefactCtrl {
             model.addAttribute("comments",
                     artefactService.fromArtefactUuid(art.get().getUuid()));
             // Wyświetl formularz do dodawania komentarza do danego artefaktu
-            if(cmt!=null && cmt.equals("displayForm")){
-                model.addAttribute("displayCommentForm", cmt);
+            if(insert!=null){
+                model.addAttribute( insert, insert);
             }
             return "user/dashboard";
         }
