@@ -28,9 +28,14 @@
             <%@ include file="/WEB-INF/views/artefacts/details.jsp" %>
         </c:if>
 
+        <c:if test = "${getResource == 'artefactCreateForm'}">
+            <%@ include file="/WEB-INF/views/artefacts/upload-form.jsp" %>
+        </c:if>
+
         <c:if test = "${getResource == 'modifyUser'}">
             <%@ include file="/WEB-INF/views/user/modify.jsp" %>
         </c:if>
+
     </security:authorize>
 
 </div>

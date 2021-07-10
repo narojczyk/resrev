@@ -20,7 +20,7 @@
     <h2>Registration</h2>
     <form action="/registration" method="post">
         <div> <label>Login: <input type="text" name="username"></label> </div>
-        <div> <label>E-mail: <input type="text" name="email"></label> </div>
+        <div> <label>E-mail: <input type="email" name="email"></label> </div>
         <div> <label>Password: <input type="password" name="passwd"></label> </div>
         <div> <label>Re-type Password: <input type="password" name="passwdConfirmed"></label> </div>
         <input type="submit" value="Register">

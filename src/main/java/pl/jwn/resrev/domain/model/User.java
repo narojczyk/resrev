@@ -1,19 +1,16 @@
 package pl.jwn.resrev.domain.model;
 
 import lombok.*;
+import pl.jwn.resrev.utils.SQLTablesConstants;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = SQLTablesConstants.USERS)
 @Getter @Setter @ToString(exclude="passwd")
 public class User {
     @Id @NotEmpty
@@ -38,13 +35,6 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    //TODO Usunąć, bo i tak tego nie używamy :)
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "shares",
-            joinColumns = @JoinColumn(name = "sharedWithUuid"),
-            inverseJoinColumns = @JoinColumn(name = "artefactUuid"))
-    private List<Share> sharesData = new ArrayList<>();
-
     public User(){
         this.uuid = generateUUID();
     }
@@ -55,10 +45,5 @@ public class User {
         this.email = email;
         this.passwd = passwd;
         this.role = role;
-    }
-
-    public User(String username, String email, String passwd, String role, List<Share> sharesData){
-        this(username, email, passwd, role);
-        this.sharesData = sharesData;
     }
 }
