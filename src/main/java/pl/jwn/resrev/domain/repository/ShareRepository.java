@@ -14,4 +14,9 @@ public interface ShareRepository extends JpaRepository<Share,Long>  {
             value = "SELECT artefact_uuid FROM "+
                     SQLTablesConstants.SHARES + " WHERE shared_with_uuid = ?1 ")
     List<String> findArtefactsUUIDsSharedForUser(String userUuid);
+
+    @Query(nativeQuery = true,
+            value = "SELECT COUNT(id) FROM " +
+                    SQLTablesConstants.SHARES + " WHERE artefact_uuid = ?1 AND shared_with_uuid = ?2 ")
+    int countExactMatchesOfUuidPairs(String artefactUuid, String sharedWithUuid);
 }
