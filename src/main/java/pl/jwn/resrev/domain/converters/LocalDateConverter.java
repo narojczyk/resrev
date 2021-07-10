@@ -5,6 +5,8 @@ import javax.persistence.Converter;
 import java.sql.Date;
 import java.time.LocalDate;
 
+//TODO Czy to jest ostatecznie używane?
+//TODO java.sql.Data nie powinniśmy używać, zostawić to w bebechach jdbc/hibernate
 @Converter(autoApply = true)
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
 

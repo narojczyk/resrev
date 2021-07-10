@@ -35,6 +35,7 @@ public class DataSetup {
         this.shareRepository = shareRepository;
     }
 
+    //TODO Czemu rozbijać to na dwie metody?
     @EventListener
     @Transactional
     public void initData(ContextRefreshedEvent event) {

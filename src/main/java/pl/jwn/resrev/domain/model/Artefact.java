@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 
 import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
+//TODO Za dużo danych w jednej encji, rozbić na inne encje albo skorzystać
+//     z dodatkowych klas o typie Embedded
 @Entity
 @Table(name = "artefacts")
 @Getter @Setter @ToString

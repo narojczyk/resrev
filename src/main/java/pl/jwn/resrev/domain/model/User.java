@@ -38,6 +38,7 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    //TODO Usunąć, bo i tak tego nie używamy :)
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "shares",
             joinColumns = @JoinColumn(name = "sharedWithUuid"),

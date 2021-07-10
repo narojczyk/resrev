@@ -32,6 +32,7 @@ public class ArtefactService {
         if(optUser.isPresent()) {
             List<Share> userShares = optUser.get().getSharesData();
             if (userShares.isEmpty()) {
+                //TODO Po co XXX, czyżby porno w kodzie???
                 log.debug("XXX shares data empty");
             } else {
                 log.debug("XXX shares found");
@@ -39,6 +40,8 @@ public class ArtefactService {
             }
             if (!userShares.isEmpty()) {
                 List<String> artefactUuids = new ArrayList<>();
+                //TODO Dzielić na metody zamiast opisywać komentarzami
+
                 // wyciągnij sygnatury artefaktów
                 userShares.forEach((s) -> artefactUuids.add(s.getArtefactUuid()));
                 // dla każdej sygnatury pobierz artefakt i dodaj do listy udostępnionych zasobów

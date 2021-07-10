@@ -9,6 +9,7 @@ import java.util.Locale;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    //TODO Zakomentowany kod usuwamy zamiast zostawiać
 //    @Override
 //    public void addFormatters(FormatterRegistry registry){
 //        registry.addConverter(publisherConverter());
