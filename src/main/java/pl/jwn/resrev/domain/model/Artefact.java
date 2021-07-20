@@ -15,6 +15,7 @@ import static pl.jwn.resrev.utils.KeyGen.generateUUID;
 
 //TODO Za dużo danych w jednej encji, rozbić na inne encje albo skorzystać
 //     z dodatkowych klas o typie Embedded
+//TODO Alternatywa to zrobić podklasy dla Artefact pod różne typy artefaktów
 @Entity
 @Table(name = SQLTablesConstants.ARTEFACTS)
 @Getter @Setter @ToString

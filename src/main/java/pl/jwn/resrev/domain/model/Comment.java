@@ -24,7 +24,13 @@ public class Comment {
     @Column(nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime created;
 
-    //TODO Wykorzstać @ForeignKey
+    //TODO Standard zajęciowy
+    /*
+    @ManyToOne
+    private Artefact artefact;
+     */
+
+    //TODO Wykorzystać @ForeignKey
     @NotEmpty
     @Column(length = 40, nullable = false)
     private String artefactUuid;
